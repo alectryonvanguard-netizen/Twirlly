@@ -28,7 +28,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.cyberlab.app.data.C
 import com.cyberlab.app.data.CheckItem
 import com.cyberlab.app.data.Content
 import com.cyberlab.app.data.Store
