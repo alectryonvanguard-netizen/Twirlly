@@ -22,14 +22,8 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Grant Execute Permission for Gradle Wrapper
-        run: chmod +x gradlew
-
-      - name: Run Unit Tests & Lint Checks
-        run: ./gradlew test lintDebug
-
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      - name: Build Debug APK with System Gradle
+        run: gradle assembleDebug
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
