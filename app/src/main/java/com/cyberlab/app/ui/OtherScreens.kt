@@ -28,7 +28,10 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.cyberlab.app.data.*
+import com.cyberlab.app.data.C
+import com.cyberlab.app.data.CheckItem
+import com.cyberlab.app.data.Content
+import com.cyberlab.app.data.Store
 import kotlin.math.log2
 
 // ───────────── TOOLS ─────────────
@@ -112,7 +115,7 @@ private fun analyze(pw: String): Pair<Int, String> {
 fun SecureScreen(store: Store) {
     val total = Content.checklist.size
     val done = store.checks.size
-    val frac = done / total.toFloat()
+    val frac = if (total > 0) done / total.toFloat() else 0f
     var pw by remember { mutableStateOf("") }
     var show by remember { mutableStateOf(false) }
     val (bits, rating) = analyze(pw)
@@ -231,7 +234,8 @@ fun ProfileScreen(store: Store, nav: NavHostController) {
             item {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     GlowCard(Modifier.weight(1f), accent = C.Purple) {
-                        Text("${store.lessons.size}/${Content.courses.sumOf { it.lessons.size }}", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                        val totalLessons = Content.courses.sumOf { it.lessons.size }
+                        Text("${store.lessons.size}/$totalLessons", color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                         Text("Lessons", color = C.Muted, fontSize = 12.sp)
                     }
                     GlowCard(Modifier.weight(1f), accent = C.Green) {
