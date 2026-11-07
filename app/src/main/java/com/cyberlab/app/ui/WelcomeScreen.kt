@@ -59,8 +59,8 @@ fun WelcomeScreen(store: Store, onDone: () -> Unit) {
     var provider by remember { mutableStateOf("") }
 
     ScreenBg {
-        Icon(
-            Icons.Filled.Security, null, tint = C.Red.copy(alpha = .10f),
+        LogoMark
+                (Modifier.size(48.dp))
             modifier = Modifier.size(360.dp).align(Alignment.TopEnd).offset(x = 90.dp, y = 60.dp)
         )
         Column(
