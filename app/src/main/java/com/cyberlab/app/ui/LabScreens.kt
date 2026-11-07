@@ -13,7 +13,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.Build as TerminalIcon
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Refresh
@@ -63,7 +63,7 @@ fun LabsScreen(store: Store, nav: NavHostController) {
             items(Content.labs, key = { it.id }) { lab ->
                 val tint = levelColors(lab.level).first
                 ListRow(
-                    TerminalIcon, tint, lab.title, "${lab.level.label} · ${lab.xp} XP\n${lab.brief}",
+                    Icons.Filled.Build, tint, lab.title, "${lab.level.label} · ${lab.xp} XP\n${lab.brief}",
                     onClick = { nav.navigate("lab/${lab.id}") },
                     trailing = {
                         if (lab.id in store.labs) Icon(Icons.Filled.CheckCircle, null, tint = C.Green)
