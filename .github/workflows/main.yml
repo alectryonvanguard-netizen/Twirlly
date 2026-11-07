@@ -22,8 +22,11 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Build Debug APK with System Gradle
-        run: gradle assembleDebug
+      - name: Grant execute permission for Gradle wrapper
+        run: chmod +x gradlew
+
+      - name: Build Debug APK with Gradle Wrapper
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
