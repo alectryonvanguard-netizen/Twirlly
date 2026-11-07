@@ -41,7 +41,11 @@ private val TABS = listOf(
     Tab("secure", "Secure", Icons.Filled.VerifiedUser),
     Tab("profile", "Profile", Icons.Filled.Person)
 )
-
+@Composable
+fun App(store: Store) {
+    var booted by rememberSaveable { mutableStateOf(false) }
+    if (!booted) BootScreen { booted = true } else AppContent(store)
+}
 @Composable
 private fun FloatingNav(modifier: Modifier, route: String?, nav: NavHostController) {
     Row(
